@@ -27,19 +27,26 @@ class App extends Component {
     return error
   }
   submitHandler(e) {
-    alert('A name was submitted: ' + this.state.username +this.state.password);
+    // alert('A name was submitted: ' + this.state.username +this.state.password);
     // this.state = {startDate:1519026163000, timeEnd:1519126755000} // example
 
     const startDate = moment(this.state.username);
     const timeEnd = moment(this.state.password);
+    
     const diff = timeEnd.diff(startDate);
     const diffDuration = moment.duration(diff);
 
+   const startDate1 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'numeric',day: 'numeric'}).format(new Date(Number(startDate)));
+   const timeEnd1 = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'numeric',day: 'numeric'}).format(new Date(Number(timeEnd)));
+    // alert('A name was submitted: ' + test);
+    // console.log(test);
     console.log("Total Duration in millis:", diffDuration.asMilliseconds());
+    console.log("from day:", startDate1);
+    console.log("to day:", timeEnd1);
     console.log("Days:", diffDuration.days());
-    console.log("Hours:", diffDuration.hours());
-    console.log("Minutes:", diffDuration.minutes());
-    console.log("Seconds:", diffDuration.seconds());
+    // console.log("Hours:", diffDuration.hours());
+    // console.log("Minutes:", diffDuration.minutes());
+    // console.log("Seconds:", diffDuration.seconds());
     e.preventDefault()
     const error = this.validate()
     if (error) {
@@ -63,17 +70,15 @@ class App extends Component {
     return (
         <form onSubmit={this.submitHandler}>
           <DatePicker 
-            id="calendar"
-            className="TestIcon"
-            dateFormat='YYYY-MM-DD' 
+            id="calendarFrom"
+            className="TestIcon" 
             placeholder='User name'
             value={username} 
             selected={this.state.username}
             onChange={this.handleDateChange}/>
           <DatePicker 
-            id="calendar"
+            id="calendarTo"
             className="TestIcon"
-            dateFormat='YYYY-MM-DD'
             placeholder='Password'
             value={password}
             selected={this.state.password}

@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders without crashing 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <DatePicker
+    allowSameDay={false}
+    className="TestIcon"
+    dateFormat="MM/dd/yyyy"
+    dateFormatCalendar="LLLL yyyy"
+    disabled={false}
+    disabledKeyboardNavigation={false}
+    dropdownMode="scroll"
+    id="calendar"
+    monthsShown={1}
+    nextMonthButtonLabel="Next month"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClickOutside={[Function]}
+    onFocus={[Function]}
+    onInputClick={[Function]}
+    onInputError={[Function]}
+    onKeyDown={[Function]}
+    onMonthChange={[Function]}
+    onSelect={[Function]}
+    onYearChange={[Function]}
+    placeholder="User name"
+    preventOpenOnFocus={false}
+    previousMonthButtonLabel="Previous Month"
+    readOnly={false}
+    renderDayContents={[Function]}
+    selected=""
+    shouldCloseOnSelect={true}
+    showTimeSelect={false}
+    timeCaption="Time"
+    timeIntervals={30}
+    value=""
+    withPortal={false}
+  />
+  <DatePicker
+    allowSameDay={false}
+    className="TestIcon"
+    dateFormat="MM/dd/yyyy"
+    dateFormatCalendar="LLLL yyyy"
+    disabled={false}
+    disabledKeyboardNavigation={false}
+    dropdownMode="scroll"
+    id="calendar"
+    monthsShown={1}
+    nextMonthButtonLabel="Next month"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClickOutside={[Function]}
+    onFocus={[Function]}
+    onInputClick={[Function]}
+    onInputError={[Function]}
+    onKeyDown={[Function]}
+    onMonthChange={[Function]}
+    onSelect={[Function]}
+    onYearChange={[Function]}
+    placeholder="Password"
+    preventOpenOnFocus={false}
+    previousMonthButtonLabel="Previous Month"
+    readOnly={false}
+    renderDayContents={[Function]}
+    selected=""
+    shouldCloseOnSelect={true}
+    showTimeSelect={false}
+    timeCaption="Time"
+    timeIntervals={30}
+    value=""
+    withPortal={false}
+  />
+  <input
+    className="btn btn-primary"
+    type="submit"
+    value="Login"
+  />
+  <div
+    className="error"
+  />
+</form>
+`;
