@@ -9,8 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
-      password: '',
+      startDate: '',
+      timeEnd: '',
       error: ''
     }
     this.setField = this.setField.bind(this)
@@ -21,18 +21,28 @@ class App extends Component {
       [field]: e.target.value
     })
   }
-  validate() {
-    const error = !(this.state.username && this.state.password)
+  validate = (startdate,enddate) => {
+    if(startdate === '' ) {
+      alert("Please fill in fields");
+      return 'not null startdate';
+    }
+    if(startdate === 10 ) {
+      return true;
+    }
+    const error = !(startdate && enddate)
     this.setState({error: error ? 'Please fill in fields': ''})
     return error
   }
   submitHandler(e) {
-    // alert('A name was submitted: ' + this.state.username +this.state.password);
+    // alert('A name was submitted: ' + this.state.startDate +this.state.timeEnd);
     // this.state = {startDate:1519026163000, timeEnd:1519126755000} // example
-
-    const startDate = moment(this.state.username);
-    const timeEnd = moment(this.state.password);
-    
+    const error = this.validate(this.state.startDate, this.state.timeEnd)
+    if (error) {
+      return 
+    }
+    const startDate = moment(this.state.startDate);
+    const timeEnd = moment(this.state.timeEnd);
+    const test = startDate.diff(timeEnd, 'days');
     const diff = timeEnd.diff(startDate);
     const diffDuration = moment.duration(diff);
 
@@ -44,44 +54,42 @@ class App extends Component {
     console.log("from day:", startDate1);
     console.log("to day:", timeEnd1);
     console.log("Days:", diffDuration.days());
+    alert("Days:" + test);
     // console.log("Hours:", diffDuration.hours());
     // console.log("Minutes:", diffDuration.minutes());
     // console.log("Seconds:", diffDuration.seconds());
     e.preventDefault()
-    const error = this.validate()
-    if (error) {
-      return 
-    }
+
     console.log(this.state)
   }
 
   handleDateChange = m => {
-    this.setState({ username: m });
+    this.setState({ startDate: m });
     //console.log(m.format("YYYY-MM-DD"));
   };
 
   handleDateChangetoDate = m => {
-    this.setState({ password: m });
+    this.setState({ timeEnd: m });
     //console.log(m.format("YYYY-MM-DD"));
   };
 
   render() {
-    const { username, password } = this.state
+    const { startDate, timeEnd } = this.state
     return (
         <form onSubmit={this.submitHandler}>
           <DatePicker 
             id="calendarFrom"
             className="TestIcon" 
             placeholder='User name'
-            value={username} 
-            selected={this.state.username}
+            value={startDate} 
+            selected={this.state.startDate}
             onChange={this.handleDateChange}/>
           <DatePicker 
             id="calendarTo"
             className="TestIcon"
-            placeholder='Password'
-            value={password}
-            selected={this.state.password}
+            placeholder='timeEnd'
+            value={timeEnd}
+            selected={this.state.timeEnd}
             onChange={this.handleDateChangetoDate} />
           <input className='btn btn-primary' type='submit' value='Login' />
           <div className='error'>{this.state.error}</div>
